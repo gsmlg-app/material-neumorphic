@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 🛤 Setup Java
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
         java-version: '11'
@@ -24,7 +24,8 @@ jobs:
         channel: 'stable'
         cache: true
 
-    - uses: bluefireteam/melos-action@main
+    - run: dart pub global activate melos
+    - run: melos bootstrap
 
     - name: 🕸 Build Web
       run: |
